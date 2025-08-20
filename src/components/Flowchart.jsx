@@ -5,7 +5,7 @@ const IMG1 = "./images/flowchart_1.png";
 const IMG2 = "./images/flowchart_2.png";
 const ALIGN = "center";
 
-export default function Flowchart() {
+export default function FlowChart() {
     const [nat1, setNat1] = useState({ w: 0, h: 0 });
     const [nat2, setNat2] = useState({ w: 0, h: 0 });
     const wrapRef = useRef(null);
@@ -86,7 +86,7 @@ export default function Flowchart() {
             <header className="panel-head">
                 <span className="head-icon" aria-hidden="true" />
                 <div>
-                    <h2 className="panel-title">Flowchart</h2>
+                    <h2 className="panel-title">FlowChart</h2>
                     <p className="panel-sub">서비스 이용 과정을 시각적으로 보여주는 흐름도</p>
                 </div>
             </header>
@@ -95,7 +95,7 @@ export default function Flowchart() {
                 <InfoSection
                     related="Create / Stage / Magazine / My Page"
                     note={
-                        "이 Flow Chart는 큰 UX 경로 단위의 탐색 흐름을 표현한 것입니다. 각 플로우(Create, Stage, Magazine, My Page 등)는 독립적으로 나뉘어 있으나, 실제 경험에서는 각 플로우가 상호보완적으로 연결되어 하나의 통합 서비스 경험을 제공합니다."
+                        "이 Flow Chart는 큰 UX 경로 단위의 탐색 흐름을 표현한 것입니다. 각 플로우(Create, Stage, Magazine, My Page 등)는 독립적으로 나뉘어 있으나,\n 실제 경험에서는 각 플로우가 상호보완적으로 연결되어 하나의 통합 서비스 경험을 제공합니다."
                     }
                 />
 
@@ -109,7 +109,7 @@ export default function Flowchart() {
                                         <div className="fc-viewport" style={{ width: `${vw}px`, height: `${displayH1}px` }}>
                                             <img
                                                 src={IMG1}
-                                                alt={`Flowchart 1 - part ${idx + 1}`}
+                                                alt={`FlowChart 1 - part ${idx + 1}`}
                                                 style={{
                                                     display: "block",
                                                     width: `${nat1.w * scale}px`,
@@ -131,7 +131,7 @@ export default function Flowchart() {
                         <div className="fc-viewport" style={{ width: `${vw}px`, height: `${displayH2}px` }}>
                             <img
                                 src={IMG2}
-                                alt="Flowchart 2"
+                                alt="FlowChart 2"
                                 style={{
                                     display: "block",
                                     width: `${nat2.w * scale}px`,

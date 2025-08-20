@@ -5,7 +5,7 @@ const IMG1 = "./images/flowchart_1.png";
 const IMG2 = "./images/flowchart_2.png";
 const ALIGN = "center";
 
-export default function FlowChart() {
+export default function Flowchart() {
     const [nat1, setNat1] = useState({ w: 0, h: 0 });
     const [nat2, setNat2] = useState({ w: 0, h: 0 });
     const wrapRef = useRef(null);
@@ -86,7 +86,7 @@ export default function FlowChart() {
             <header className="panel-head">
                 <span className="head-icon" aria-hidden="true" />
                 <div>
-                    <h2 className="panel-title">FlowChart</h2>
+                    <h2 className="panel-title">Flowchart</h2>
                     <p className="panel-sub">서비스 이용 과정을 시각적으로 보여주는 흐름도</p>
                 </div>
             </header>
@@ -109,7 +109,7 @@ export default function FlowChart() {
                                         <div className="fc-viewport" style={{ width: `${vw}px`, height: `${displayH1}px` }}>
                                             <img
                                                 src={IMG1}
-                                                alt={`FlowChart 1 - part ${idx + 1}`}
+                                                alt={`Flowchart 1 - part ${idx + 1}`}
                                                 style={{
                                                     display: "block",
                                                     width: `${nat1.w * scale}px`,
@@ -131,7 +131,7 @@ export default function FlowChart() {
                         <div className="fc-viewport" style={{ width: `${vw}px`, height: `${displayH2}px` }}>
                             <img
                                 src={IMG2}
-                                alt="FlowChart 2"
+                                alt="Flowchart 2"
                                 style={{
                                     display: "block",
                                     width: `${nat2.w * scale}px`,

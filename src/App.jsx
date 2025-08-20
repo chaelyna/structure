@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "./App.css";
-import FlowChart from "./components/Flowchart";
+import Flowchart from "./components/Flowchart";
 import IA from "./components/IA";
 import Wireframe from "./components/Wireframe";
 
@@ -43,7 +43,7 @@ export default function App() {
 
       <main className="container">
         {active === "ia" && <IA />}
-        {active === "flowchart" && <FlowChart />}
+        {active === "flowchart" && <Flowchart />}
         {active === "wireframe" && <Wireframe />}
       </main>
     </div>

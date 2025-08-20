@@ -4,8 +4,7 @@
 :root {
   --text: #111827;
   --muted: #6b7280;
-  --line: #e5e7eb;
-  --bg-soft: #f7f8fb;
+  --bg-soft: #ffffff;
   /* 헤더 박스 배경 */
   --tint: #d1fae5;
   /* 아이콘 배경(연초록) */
@@ -20,13 +19,16 @@
     sans-serif;
 }
 
-/* 페이지 컨테이너 */
+/* 본문 컨텐츠 배경 */
 .container {
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
   padding: 24px 24px 64px;
   text-align: left;
+
+  background-color: #FAFAFA;
+  /* 이 줄 추가 */
 }
 
 /* =========================
@@ -37,6 +39,7 @@
   top: 0;
   z-index: 50;
   background: #fff;
+  /* 그대로 두기 */
   border-bottom: 1px solid var(--line);
 }
 
@@ -157,77 +160,57 @@
 }
 
 /* =========================
-   InfoSection (오토레이어)
-   - 래퍼: 폭/패딩 직접 제어
+   InfoSection (오토레이어 묶음, Grid로 정렬 고정)
    ========================= */
+
+/* 래퍼: 좌우 패딩 고정, 아래쪽 여백(이미지와 간격) */
 .info-auto-wrap {
   width: 100%;
+  padding: 0 24px;
+  margin-bottom: 45px;
 }
 
-/* 섹션에서 maxWidth + padX를 인라인으로 줌 */
-
-/* 두 컬럼을 윗선 기준으로 정렬 → 글씨 '삐뚤어짐' 방지 */
-.info-auto {
-  display: flex;
-  align-items: flex-start;
-  gap: 51px;
-  /* 컬럼 간격(기본값) - 컴포넌트에서 덮어쓸 수 있음 */
-  margin: 0;
+/* 2열(Grid): 왼쪽 49px, 오른쪽 유동폭
+   가로 간격 51px, 세로(행) 간격 16px */
+.info-grid {
+  display: grid;
+  grid-template-columns: 49px 1fr;
+  column-gap: 51px;
+  row-gap: 12px;
+  align-items: start;
+  /* 각 셀을 윗선 기준으로 */
 }
 
-/* 왼쪽 라벨 49px (가운데 정렬) */
-.info-col-labels {
-  display: flex;
-  width: 49px;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  /* 행 간격(기본값) */
-  text-align: center;
-}
-
-/* 오른쪽 설명: ✅ 고정폭 삭제 → 유동폭 */
-.info-col-texts {
-  display: flex;
-  flex: 1 1 auto;
-  /* 가로폭 자동 확장 */
-  width: auto;
-  min-width: 0;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 20px;
-  /* 행 간격(기본값) */
-}
-
+/* 라벨: 49px 칼럼 안에서 수평 중앙 정렬 */
 .info-label {
+  justify-self: center;
   color: #9aa0a6;
   font-size: 13px;
   font-weight: 700;
   letter-spacing: .02em;
   white-space: nowrap;
-  /* 줄바꿈 금지 */
   word-break: keep-all;
-  overflow: visible;
 }
 
+/* 텍스트: 유동폭, 줄바꿈 허용 */
 .info-text {
   color: #2b2f36;
   font-size: 14px;
-  line-height: 1.6;
+  line-height: 1.7;
+  /* 살짝 넉넉하게 */
   white-space: pre-line;
-  /* \n 표시 */
 }
 
-/* 정보블록과 이미지 묶음 사이 간격 */
-.info-auto+.media-group {
-  margin-top: 24px;
-}
+
+/* (참고) 이전에 쓰던 .info-auto + .media-group 간격은
+   이제 .info-auto-wrap의 margin-bottom으로 일괄 관리 */
 
 /* =========================
    이미지 묶음(보더/그림자 없음)
    ========================= */
 .media-group {
-  margin: 12px auto 0;
+  margin: 12px 24px 0;
+  /* 좌우 24px로 통일(가운데 정렬 안 함) */
   padding: 0;
   border: none;
   background: transparent;
@@ -245,7 +228,7 @@
 }
 
 /* =========================
-   FlowChart 전용
+   Flowchart 전용
    ========================= */
 .fc-wrap {
   width: 100%;
@@ -259,7 +242,7 @@
   margin: 0;
 }
 
-/* 슬라이더·이미지 간 여백 더 줄임 */
+/* 여백 타이트 */
 .fc-spacer-xl {
   height: 40px;
 }
@@ -280,7 +263,7 @@
   justify-content: center;
   gap: 8px;
   margin-top: 6px;
-  margin-bottom: 50px;
+  margin-bottom: 32px;
   /* 60 → 24 */
 }
 
@@ -296,17 +279,19 @@
 /* =========================
    페이지별 폭/여백
    ========================= */
-/* IA: 더 줄임(1200) + 안쪽 패딩 24 */
+/* IA: 더 줄임(원하면 여기만 숫자 조절) + 안쪽 패딩 24 */
 .panel-ia .panel-content {
   padding-left: 24px;
   padding-right: 24px;
 }
 
 .panel-ia .media-group {
-  max-width: 700px;
+  max-width: 550px;
 }
 
-/* Flowchart: 이미지 조금 키움(1360) + 패딩 12 */
+/* 필요시 960 등으로 줄이세요 */
+
+/* Flowchart: 이미지 약간 크게(1360) + 패딩 12 */
 .panel-flowchart .panel-content {
   padding-left: 12px;
   padding-right: 12px;
@@ -324,14 +309,6 @@
 
 .panel-wireframe .media-group {
   max-width: 1280px;
-}
-
-/* 가운데 정렬 */
-.panel-ia .media-group,
-.panel-flowchart .media-group,
-.panel-wireframe .media-group {
-  margin-left: 24px;
-  margin-right: 24px;
 }
 
 /* 반응형 */

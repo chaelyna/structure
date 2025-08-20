@@ -97,6 +97,10 @@ export default function FlowChart() {
                     note={
                         "이 Flow Chart는 큰 UX 경로 단위의 탐색 흐름을 표현한 것입니다. 각 플로우(Create, Stage, Magazine, My Page 등)는 독립적으로 나뉘어 있으나,\n 실제 경험에서는 각 플로우가 상호보완적으로 연결되어 하나의 통합 서비스 경험을 제공합니다."
                     }
+                    maxWidth={1200}  /* Flowchart는 적당히 */
+                    padX={12}
+                    gapCol={40}
+                    gapRow={16}
                 />
 
                 <div className="media-group">

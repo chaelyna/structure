@@ -15,7 +15,9 @@
 
 .app {
   color: var(--text);
-  font-family: "Pretendard", "Pretendard Variable", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+  font-family: "Pretendard", "Pretendard Variable", system-ui, -apple-system,
+    Segoe UI, Roboto, Helvetica, Arial, "Apple SD Gothic Neo", "Noto Sans KR",
+    sans-serif;
 }
 
 /* 페이지 컨테이너 */
@@ -155,15 +157,21 @@
 }
 
 /* =========================
-   오토레이어: 관련 화면 / 비고
+   InfoSection (오토레이어)
+   - 래퍼: 폭/패딩 직접 제어
    ========================= */
-/* 두 컬럼을 윗선 기준으로 정렬 → 글씨 '삐뚤어짐' 해소 */
+.info-auto-wrap {
+  width: 100%;
+}
+
+/* 섹션에서 maxWidth + padX를 인라인으로 줌 */
+
+/* 두 컬럼을 윗선 기준으로 정렬 → 글씨 '삐뚤어짐' 방지 */
 .info-auto {
   display: flex;
   align-items: flex-start;
-  /* ← center 에서 수정 */
   gap: 51px;
-  /* 두 컬럼 사이 간격 */
+  /* 컬럼 간격(기본값) - 컴포넌트에서 덮어쓸 수 있음 */
   margin: 0;
 }
 
@@ -174,18 +182,21 @@
   flex-direction: column;
   align-items: center;
   gap: 20px;
-  /* 38px → 20px 로 축소 */
+  /* 행 간격(기본값) */
   text-align: center;
 }
 
-/* 오른쪽 설명 1245px */
+/* 오른쪽 설명: ✅ 고정폭 삭제 → 유동폭 */
 .info-col-texts {
   display: flex;
-  width: 1245px;
+  flex: 1 1 auto;
+  /* 가로폭 자동 확장 */
+  width: auto;
+  min-width: 0;
   flex-direction: column;
   align-items: flex-start;
   gap: 20px;
-  /* 38px → 20px 로 축소 */
+  /* 행 간격(기본값) */
 }
 
 .info-label {
@@ -194,9 +205,9 @@
   font-weight: 700;
   letter-spacing: .02em;
   white-space: nowrap;
+  /* 줄바꿈 금지 */
   word-break: keep-all;
   overflow: visible;
-  /* 줄바꿈 금지 */
 }
 
 .info-text {
@@ -204,14 +215,13 @@
   font-size: 14px;
   line-height: 1.6;
   white-space: pre-line;
+  /* \n 표시 */
 }
 
 /* 정보블록과 이미지 묶음 사이 간격 */
 .info-auto+.media-group {
   margin-top: 24px;
 }
-
-/* 28 → 24로 살짝 줄임 */
 
 /* =========================
    이미지 묶음(보더/그림자 없음)
@@ -258,22 +268,20 @@
   height: 12px;
 }
 
-/* 20 → 12 */
-
 .fc-swiper {
   position: relative;
-  padding-bottom: 32px;
+  padding-bottom: 24px;
 }
 
-/* 기본 내부 여백 */
+/* 32 → 24 */
 .fc-pagination {
   position: static !important;
   display: flex;
   justify-content: center;
   gap: 8px;
   margin-top: 6px;
-  margin-bottom: 60px;
-  /* 150 → 24로 대폭 축소 */
+  margin-bottom: 50px;
+  /* 60 → 24 */
 }
 
 .swiper-pagination-bullet {
@@ -295,25 +303,20 @@
 }
 
 .panel-ia .media-group {
-  max-width: 1200px;
+  max-width: 700px;
 }
 
-/* 1440 → 1200 */
-
-/* Flowchart: 조금 키움(1200→1360) + 패딩 12 */
+/* Flowchart: 이미지 조금 키움(1360) + 패딩 12 */
 .panel-flowchart .panel-content {
   padding-left: 12px;
   padding-right: 12px;
 }
 
-/* 24 → 12 */
 .panel-flowchart .media-group {
   max-width: 1360px;
 }
 
-/* 1200 → 1360 */
-
-/* Wireframe: 그대로(1280) */
+/* Wireframe: 중간(1280) */
 .panel-wireframe .panel-content {
   padding-left: 24px;
   padding-right: 24px;
@@ -327,8 +330,8 @@
 .panel-ia .media-group,
 .panel-flowchart .media-group,
 .panel-wireframe .media-group {
-  margin-left: auto;
-  margin-right: auto;
+  margin-left: 24px;
+  margin-right: 24px;
 }
 
 /* 반응형 */

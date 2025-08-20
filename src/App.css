@@ -1,32 +1,157 @@
-/* 컨테이너: 1920까지 넓게, 좌측 정렬 */
-.flowchart-container {
-  width: 100%;
-  max-width: 1920px;
-  margin: 0 auto;
-  padding: 24px 24px 48px;
-  text-align: left;
-  color: #111827;
+/* =========================
+   공통 컨테이너 / 타이포
+   ========================= */
+:root {
+  --text: #111827;
+  --muted: #6b7280;
+  --line: #e5e7eb;
+  --bg-soft: #f7f8fb;
+}
+
+.app {
+  color: var(--text);
   font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
     "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
 }
 
-/* 제목 · 설명 */
-.fc-head {
-  margin-bottom: 12px;
+/* 페이지 기본 컨테이너 (좌측 정렬) */
+.container {
+  width: 100%;
+  max-width: 1920px;
+  /* 요청하신대로 1920까지 넓게 */
+  margin: 0 auto;
+  padding: 24px 24px 64px;
+  text-align: left;
 }
 
-.fc-title {
-  margin: 0 0 6px;
+/* =========================
+   상단 네비게이션 (탭 영역)
+   ========================= */
+.nav {
+  position: sticky;
+  /* 스크롤해도 상단 고정 */
+  top: 0;
+  z-index: 50;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  max-width: 1920px;
+  margin: 0 auto;
+  padding: 10px 16px;
+}
+
+/* 브랜드(로고) */
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* 수정: 높이만 고정, 너비는 자동(원본 비율 유지) */
+.brand img {
+  height: 28px;
+  /* 네비바에서 보일 높이만 정해요 */
+  width: auto;
+  /* 가로는 원본 비율대로 */
+  display: block;
+  object-fit: contain;
+  /* 혹시 컨테이너가 더 작아도 안전 */
+}
+
+/* 탭 버튼들 */
+.tabs {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 8px;
+  /* 로고와 간격 */
+}
+
+.tab-btn {
+  position: relative;
+  appearance: none;
+  border: 0;
+  background: transparent;
+  padding: 10px 14px;
+  border-radius: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background .15s ease, color .15s ease;
+}
+
+.tab-btn:hover {
+  background: #f3f4f6;
+  color: var(--text);
+}
+
+.tab-active {
+  color: var(--text);
+  background: #f3f4f6;
+}
+
+/* 디자인허브 느낌의 하단 인디케이터 */
+.tab-active::after {
+  content: "";
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: -10px;
+  /* 탭 아래 선 */
+  height: 2px;
+  background: var(--text);
+  border-radius: 2px;
+}
+
+/* =========================
+   패널(섹션) 공통
+   ========================= */
+.panel {
+  margin-top: 18px;
+}
+
+.panel-head {
+  margin-bottom: 10px;
+}
+
+.panel-title {
+  margin: 0;
   font-size: 28px;
   font-weight: 700;
+  line-height: 1.25;
 }
 
-.fc-sub {
-  margin: 0;
-  color: #6b7280;
+.panel-sub {
+  margin-top: 6px;
+  color: var(--muted);
   font-size: 16px;
 }
 
+/* 본문 카드 느낌 컨테이너가 필요하면 사용 */
+.panel-body {
+  margin-top: 10px;
+}
+
+.panel-content {
+  /* 필요 시 배경/테두리 켤 수 있음 */
+  /* background: var(--bg-soft);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 16px; */
+}
+
+/* =========================
+   InfoSection (라벨/텍스트)
+   ========================= */
+.info-section {
+  margin-bottom: 8px;
+}
 
 .info-row {
   display: grid;
@@ -38,6 +163,7 @@
 .info-label {
   color: #9aa0a6;
   font-size: 14px;
+  font-weight: 600;
 }
 
 .info-text {
@@ -46,94 +172,9 @@
   line-height: 1.7;
 }
 
-/* 이미지 카드(배경, 테두리, 둥근모서리) */
-.image-card {
-  background: #f7f8fb;
-  border: 1px solid #e5e7eb;
-  border-radius: 12px;
-  padding: 16px;
-}
-
-/* 이미지 */
-.image-wrapper {}
-
-.flowchart-image {
-  width: 100%;
-  height: auto;
-  display: block;
-  border: none;
-  /* 보더 제거 */
-  box-shadow: none;
-  /* 그림자 제거 */
-}
-
-
-/* FlowChart Swiper Pagination */
-.fc-swiper {
-  position: relative;
-  /* swiper-container는 relative 유지 */
-  padding-bottom: 48px;
-  /* 이미지와 점 사이 여백 확보 */
-}
-
-.fc-pagination {
-  position: static !important;
-  /* 이미지 위에서 벗어나, 자연스럽게 아래 배치 */
-  margin-top: 16px;
-  /* 추가 여백 */
-  text-align: center;
-  /* 점을 가운데 정렬 */
-}
-
-
-
-.nav-button {
-  background: none;
-  border: none;
-  font-size: 20px;
-  cursor: pointer;
-}
-
-.dots {
-  display: flex;
-  gap: 8px;
-}
-
-.dot {
-  width: 10px;
-  height: 10px;
-  background-color: #d1d5db;
-  border-radius: 50%;
-  cursor: pointer;
-}
-
-.dot.active {
-  background-color: #111827;
-}
-
-
-/* InfoSection */
-.info-section {
-  margin-bottom: 8px;
-}
-
-.info-row {
-  display: flex;
-  gap: 16px;
-  margin-bottom: 4px;
-}
-
-.info-label {
-  width: 80px;
-  color: #9aa0a6;
-  font-weight: 600;
-}
-
-.info-text {
-  color: #2b2f36;
-}
-
-/* 이미지 공통 */
+/* =========================
+   이미지 공통
+   ========================= */
 .preview-img {
   width: 100%;
   height: auto;
@@ -144,28 +185,50 @@
   border-radius: 0;
 }
 
-/* 여백 유틸 */
+/* =========================
+   FlowChart 전용(이미 쓰는 클래스 정리)
+   ========================= */
+.fc-wrap {
+  width: 100%;
+}
+
+.fc-align-center {
+  margin: 0 auto;
+}
+
+.fc-align-left {
+  margin: 0;
+}
+
 .fc-spacer-xl {
   height: 40px;
 }
 
-/* (이미 적용했다면 유지) Swiper 페이지네이션을 이미지 아래로 */
+.fc-spacer-md {
+  height: 20px;
+}
+
 .fc-swiper {
   position: relative;
   padding-bottom: 48px;
 }
 
-/* 점(페이지네이션) 위치/간격 */
 .fc-pagination {
-  position: static;
-  /* 점이 슬라이더 밖으로 나오게 */
+  position: static !important;
   display: flex;
   justify-content: center;
   gap: 8px;
-
-  /* 위/아래 간격을 여기서 한 번에 조절 */
   margin-top: 8px;
-  /* 이미지와 점 사이 */
-  margin-bottom: 150px;
-  /* 점과 아래 이미지 사이 ← 이 값 키우면 더 내려감 */
+  margin-bottom: 100px;
+  /* 아래 이미지와 간격 */
+}
+
+/* Swiper 점 스타일(기본 값 사용 가능) */
+.swiper-pagination-bullet {
+  background: #d1d5db;
+  opacity: 1;
+}
+
+.swiper-pagination-bullet-active {
+  background: #111827;
 }

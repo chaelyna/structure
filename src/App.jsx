@@ -1,35 +1,51 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from "react";
+import "./App.css";
+import FlowChart from "./components/Flowchart";
+import IA from "./components/IA";
+import Wireframe from "./components/Wireframe";
 
-function App() {
-  const [count, setCount] = useState(0)
+
+export default function App() {
+  const [active, setActive] = useState("ia"); // 기본 탭을 IA로 시작하고 싶으면 여기 "ia" 로 설정
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <div>
+      <nav className="nav">
+        <div className="nav-inner">
+          <div style={{ display: "flex", alignItems: "center" }}>
+            <div className="brand">
+              <img src="./images/logo.png" alt="DesignHub logo" />
+            </div>
+            <div className="tabs">
+              {/* IA → FlowChart → Wireframe 순서 */}
+              <button
+                onClick={() => setActive("ia")}
+                className={`tab-btn ${active === "ia" ? "tab-active" : ""}`}
+              >
+                IA
+              </button>
+              <button
+                onClick={() => setActive("flowchart")}
+                className={`tab-btn ${active === "flowchart" ? "tab-active" : ""}`}
+              >
+                FlowChart
+              </button>
+              <button
+                onClick={() => setActive("wireframe")}
+                className={`tab-btn ${active === "wireframe" ? "tab-active" : ""}`}
+              >
+                Wireframe
+              </button>
+            </div>
+          </div>
+        </div>
+      </nav>
 
-export default App
+      <main className="container">
+        {active === "ia" && <IA />}
+        {active === "flowchart" && <FlowChart />}
+        {active === "wireframe" && <Wireframe />}
+      </main>
+    </div>
+  );
+}

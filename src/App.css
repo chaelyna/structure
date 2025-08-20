@@ -1,42 +1,171 @@
-#root {
-  max-width: 1280px;
+/* 컨테이너: 1920까지 넓게, 좌측 정렬 */
+.flowchart-container {
+  width: 100%;
+  max-width: 1920px;
   margin: 0 auto;
-  padding: 2rem;
+  padding: 24px 24px 48px;
+  text-align: left;
+  color: #111827;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial,
+    "Apple SD Gothic Neo", "Noto Sans KR", sans-serif;
+}
+
+/* 제목 · 설명 */
+.fc-head {
+  margin-bottom: 12px;
+}
+
+.fc-title {
+  margin: 0 0 6px;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.fc-sub {
+  margin: 0;
+  color: #6b7280;
+  font-size: 16px;
+}
+
+
+.info-row {
+  display: grid;
+  grid-template-columns: 120px 1fr;
+  column-gap: 24px;
+  margin: 8px 0;
+}
+
+.info-label {
+  color: #9aa0a6;
+  font-size: 14px;
+}
+
+.info-text {
+  color: #2b2f36;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* 이미지 카드(배경, 테두리, 둥근모서리) */
+.image-card {
+  background: #f7f8fb;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+}
+
+/* 이미지 */
+.image-wrapper {}
+
+.flowchart-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  /* 보더 제거 */
+  box-shadow: none;
+  /* 그림자 제거 */
+}
+
+
+/* FlowChart Swiper Pagination */
+.fc-swiper {
+  position: relative;
+  /* swiper-container는 relative 유지 */
+  padding-bottom: 48px;
+  /* 이미지와 점 사이 여백 확보 */
+}
+
+.fc-pagination {
+  position: static !important;
+  /* 이미지 위에서 벗어나, 자연스럽게 아래 배치 */
+  margin-top: 16px;
+  /* 추가 여백 */
   text-align: center;
+  /* 점을 가운데 정렬 */
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+
+
+.nav-button {
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.dots {
+  display: flex;
+  gap: 8px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
+.dot {
+  width: 10px;
+  height: 10px;
+  background-color: #d1d5db;
+  border-radius: 50%;
+  cursor: pointer;
 }
 
-.card {
-  padding: 2em;
+.dot.active {
+  background-color: #111827;
 }
 
-.read-the-docs {
-  color: #888;
+
+/* InfoSection */
+.info-section {
+  margin-bottom: 8px;
+}
+
+.info-row {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 4px;
+}
+
+.info-label {
+  width: 80px;
+  color: #9aa0a6;
+  font-weight: 600;
+}
+
+.info-text {
+  color: #2b2f36;
+}
+
+/* 이미지 공통 */
+.preview-img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: none;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+
+/* 여백 유틸 */
+.fc-spacer-xl {
+  height: 40px;
+}
+
+/* (이미 적용했다면 유지) Swiper 페이지네이션을 이미지 아래로 */
+.fc-swiper {
+  position: relative;
+  padding-bottom: 48px;
+}
+
+/* 점(페이지네이션) 위치/간격 */
+.fc-pagination {
+  position: static;
+  /* 점이 슬라이더 밖으로 나오게 */
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+
+  /* 위/아래 간격을 여기서 한 번에 조절 */
+  margin-top: 8px;
+  /* 이미지와 점 사이 */
+  margin-bottom: 150px;
+  /* 점과 아래 이미지 사이 ← 이 값 키우면 더 내려감 */
 }

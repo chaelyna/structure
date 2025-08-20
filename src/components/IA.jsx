@@ -8,7 +8,7 @@ export default function IA() {
                 <span className="head-icon" aria-hidden="true" />
                 <div>
                     <h2 className="panel-title">Information Architecture</h2>
-                    <p className="panel-sub">앱의 콘텐츠와 기능을 체계적으로 정리한 구조 설계</p>
+                    <p className="panel-sub">서비스 기능의 전체 구조</p>
                 </div>
             </header>
 

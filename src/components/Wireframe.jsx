@@ -98,7 +98,7 @@ export default function Wireframe() {
                 <span className="head-icon" aria-hidden="true" />
                 <div>
                     <h2 className="panel-title">Wireframe</h2>
-                    <p className="panel-sub">모바일/데스크톱 화면 구조와 주요 레이아웃 설계</p>
+                    <p className="panel-sub">화면 레이아웃 구체화</p>
                 </div>
             </header>
 

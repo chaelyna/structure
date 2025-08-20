@@ -87,7 +87,7 @@ export default function Flowchart() {
                 <span className="head-icon" aria-hidden="true" />
                 <div>
                     <h2 className="panel-title">Flowchart</h2>
-                    <p className="panel-sub">서비스 이용 과정을 시각적으로 보여주는 흐름도</p>
+                    <p className="panel-sub">사용자의 탐색 경로</p>
                 </div>
             </header>
 
@@ -95,7 +95,7 @@ export default function Flowchart() {
                 <InfoSection
                     related="Create / Stage / Magazine / My Page"
                     note={
-                        "이 Flow Chart는 큰 UX 경로 단위의 탐색 흐름을 표현한 것입니다. 각 플로우(Create, Stage, Magazine, My Page 등)는 독립적으로 나뉘어 있으나,\n 실제 경험에서는 각 플로우가 상호보완적으로 연결되어 하나의 통합 서비스 경험을 제공합니다."
+                        "이 Flow Chart는 큰 UX 경로 단위의 탐색 흐름을 표현한 것입니다. 각 플로우(Create, Stage, Magazine, My Page 등)는 독립적으로 나뉘어 있으나, 실제 경험에서는 각 플로우가 상호보완적으로 연결되어 하나의 통합 서비스 경험을 제공합니다."
                     }
                 />
 

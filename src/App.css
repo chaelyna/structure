@@ -24,11 +24,10 @@
   width: 100%;
   max-width: 1920px;
   margin: 0 auto;
-  padding: 24px 24px 64px;
+  padding: 9px 24px 64px;
+  /* ← 여기 padding-top 줄이기 (기존 24px → 16px 같은 식) */
   text-align: left;
-
   background-color: #FAFAFA;
-  /* 이 줄 추가 */
 }
 
 /* =========================
@@ -39,8 +38,12 @@
   top: 0;
   z-index: 50;
   background: #fff;
-  /* 그대로 두기 */
   border-bottom: 1px solid var(--line);
+
+  margin-bottom: 0;
+  /* 혹시 기본 margin이 있으면 제거 */
+  padding-bottom: 0;
+  /* 불필요한 padding 제거 */
 }
 
 .nav-inner {

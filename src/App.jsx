@@ -1,11 +1,28 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "./App.css";
 import Flowchart from "./components/Flowchart";
 import IA from "./components/IA";
 import Wireframe from "./components/Wireframe";
 
 export default function App() {
-  const [active, setActive] = useState("ia"); // 시작 탭(원하면 wireframe/ia로 변경)
+  // URL 해시에서 현재 탭을 읽어오는 함수
+  const getInitialTab = () => {
+    const hash = window.location.hash.replace("#", "");
+    return hash || "ia"; // 해시가 없으면 기본은 ia
+  };
+
+  const [active, setActive] = useState(getInitialTab);
+
+  // 해시 변경 감지 → active 갱신
+  useEffect(() => {
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash) setActive(hash);
+    };
+
+    window.addEventListener("hashchange", handleHashChange);
+    return () => window.removeEventListener("hashchange", handleHashChange);
+  }, []);
 
   return (
     <div className="app">
@@ -17,21 +34,21 @@ export default function App() {
 
           <div className="tabs">
             <button
-              onClick={() => setActive("ia")}
+              onClick={() => (window.location.hash = "ia")}
               className={`tab-btn ${active === "ia" ? "tab-active" : ""}`}
             >
               IA
             </button>
 
             <button
-              onClick={() => setActive("flowchart")}
+              onClick={() => (window.location.hash = "flowchart")}
               className={`tab-btn ${active === "flowchart" ? "tab-active" : ""}`}
             >
               Flowchart
             </button>
 
             <button
-              onClick={() => setActive("wireframe")}
+              onClick={() => (window.location.hash = "wireframe")}
               className={`tab-btn ${active === "wireframe" ? "tab-active" : ""}`}
             >
               Wireframe
@@ -39,7 +56,6 @@ export default function App() {
           </div>
         </div>
       </nav>
-
 
       <main className="container">
         {active === "ia" && <IA />}
